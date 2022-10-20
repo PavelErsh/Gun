@@ -26,6 +26,7 @@ class Game(arcade.Window):
     def __init__(self, widht, height, title):
         super().__init__(widht, height, title)
         self.bg = arcade.load_texture("bg.jpg")
+        self.left_wheel = arcade.load_texture("wheel.png")
         self.gun = Gun()
     def on_key_press(self, key, modifiers):
         if key == arcade.key.RIGHT:
@@ -40,6 +41,7 @@ class Game(arcade.Window):
         self.clear()
         arcade.draw_texture_rectangle(SCREEN_WIDHT/2, SCEEN_HEIGHT/2, SCREEN_WIDHT, SCEEN_HEIGHT, self.bg)
         self.gun.draw()
+        arcade.draw_texture_rectangle(self.gun.center_x, self.gun.center_y, 100, 100, self.left_wheel)
     def update(self, delta_time):
         self.gun.update()
 
